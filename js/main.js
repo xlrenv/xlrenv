@@ -98,15 +98,17 @@
     document.querySelectorAll('[data-copy]').forEach(function (btn) {
       btn.addEventListener('click', function () {
         const value = btn.getAttribute('data-copy');
+        const customLabel = btn.getAttribute('data-copy-label');
         if (!value) return;
 
         function notify() {
           if (XLR.audio) XLR.audio.play('switch');
           if (toast) {
+            const msg = customLabel || '[ COPIED TO CLIPBOARD // ' + value + ' ]';
             if (XLR.scramble) {
-              XLR.scramble(toast, '[ COPIED TO CLIPBOARD // ' + value + ' ]', 240);
+              XLR.scramble(toast, msg, 240);
             } else {
-              toast.textContent = '[ COPIED TO CLIPBOARD // ' + value + ' ]';
+              toast.textContent = msg;
             }
           }
         }
