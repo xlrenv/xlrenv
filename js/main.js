@@ -77,11 +77,11 @@
     const roleEl = document.getElementById('hero-role-text');
     if (roleEl && XLR.scramble) {
       setTimeout(function () {
-        XLR.scramble(roleEl, 'devsecops инженер', 480);
+        XLR.scramble(roleEl, 'devsecops engineer', 480);
       }, 180);
 
       roleEl.parentElement.addEventListener('mouseenter', function () {
-        XLR.scramble(roleEl, 'devsecops инженер', 260);
+        XLR.scramble(roleEl, 'devsecops engineer', 260);
       });
     }
 

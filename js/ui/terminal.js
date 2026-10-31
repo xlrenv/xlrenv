@@ -59,7 +59,7 @@
           'shell-line--muted'
         );
       } else if (cmd === 'whoami' || cmd === 'id') {
-        printLine('uid=0(xlrenv) role=devsecops_инженер posture=hardened');
+        printLine('uid=0(xlrenv) role=devsecops_engineer posture=hardened');
         printLine('focus: infrastructure security, ci/cd hardening, zero-trust, low-level');
       } else if (cmd === 'stack' || cmd === 'skills') {
         printLine('01 INFRA   :: k8s · terraform · linux · docker · nix');
