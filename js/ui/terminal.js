@@ -58,9 +58,10 @@
           'commands: whoami · stack · audit · links · invert · morph · glitch · clear',
           'shell-line--muted'
         );
-      } else if (cmd === 'whoami' || cmd === 'id') {
-        printLine('uid=0(xlrenv) role=devsecops_engineer posture=hardened');
-        printLine('focus: infrastructure security, ci/cd hardening, zero-trust, low-level');
+      } else if (cmd === 'whoami') {
+        printLine('xlrenv');
+      } else if (cmd === 'id') {
+        printLine('uid=0(xlrenv) gid=0(xlrenv) groups=0(devsecops)');
       } else if (cmd === 'stack' || cmd === 'skills') {
         printLine('01 INFRA   :: k8s · terraform · linux · docker · nix');
         printLine('02 SECOPS  :: sast/dast · trivy · vault · cosign · opa');
