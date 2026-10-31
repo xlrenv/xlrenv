@@ -10,9 +10,9 @@
   100% { transform: translate(0, 0); }
 }
 
-@keyframes beaconBlink {
-  0%, 76% { opacity: 1; }
-  77%, 100% { opacity: 0.18; }
+@keyframes eqPulse {
+  0% { transform: scaleY(0.45); }
+  100% { transform: scaleY(1.15); }
 }
 
 @keyframes shutterPulse {

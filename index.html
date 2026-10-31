@@ -40,28 +40,38 @@
     <span class="reticle-corner reticle-corner--br"></span>
   </div>
 
-  <!-- Minimalist Corner Micro-HUD -->
-  <header class="hud hud--tl" aria-label="System status">
-    <span class="status-beacon" aria-hidden="true"></span>
-    <span>XLRENV // NODE.01</span>
-  </header>
-
-  <div class="hud hud--tr" role="toolbar" aria-label="Display and audio controls">
-    <button id="theme-toggle" class="hud-toggle" type="button" aria-pressed="false" title="Toggle Void / Bone polarity [I]">
-      MODE: VOID
+  <!-- Minimalist Top-Right Ambient Controls (Theme & Sound) -->
+  <div class="ambient-controls" role="toolbar" aria-label="Appearance and sound">
+    <button
+      id="theme-toggle"
+      class="ctrl-btn"
+      type="button"
+      aria-pressed="false"
+      aria-label="Switch color theme"
+      title="Theme"
+    >
+      <svg class="icon-eclipse" viewBox="0 0 20 20" width="15" height="15" aria-hidden="true">
+        <circle cx="10" cy="10" r="7.25" fill="none" stroke="currentColor" stroke-width="1.5" />
+        <path d="M10 2.75 A7.25 7.25 0 0 1 10 17.25 Z" fill="currentColor" />
+      </svg>
     </button>
-    <button id="sfx-toggle" class="hud-toggle" type="button" aria-pressed="false" title="Toggle tactile micro-audio">
-      SFX: OFF
+
+    <button
+      id="sfx-toggle"
+      class="ctrl-btn"
+      type="button"
+      aria-pressed="false"
+      aria-label="Toggle sound effects"
+      title="Sound"
+    >
+      <span class="eq-bars" aria-hidden="true">
+        <span class="eq-bar"></span>
+        <span class="eq-bar"></span>
+        <span class="eq-bar"></span>
+        <span class="eq-bar"></span>
+        <span class="eq-slash"></span>
+      </span>
     </button>
-  </div>
-
-  <footer class="hud hud--bl" aria-label="Telemetry">
-    <span id="hud-clock">00:00:00 UTC</span>
-    <span id="hud-hash" class="hud-hash">// SHA:00000000</span>
-  </footer>
-
-  <div class="hud hud--br" aria-hidden="true">
-    <span>[1–3] VIEW · [I] INVERT · [ESC] RESET</span>
   </div>
 
   <!-- Central Minimalist Stage (OsamaSon-inspired stark composition) -->

@@ -11,12 +11,6 @@
     if (!btn) return;
     const isBone = XLR.state.theme === 'bone';
     btn.setAttribute('aria-pressed', isBone ? 'true' : 'false');
-    const txt = isBone ? 'MODE: BONE' : 'MODE: VOID';
-    if (XLR.scramble) {
-      XLR.scramble(btn, txt, 220);
-    } else {
-      btn.textContent = txt;
-    }
   }
 
   function updateSfxButton() {
@@ -24,7 +18,6 @@
     if (!btn) return;
     const on = XLR.state.sfx;
     btn.setAttribute('aria-pressed', on ? 'true' : 'false');
-    btn.textContent = on ? 'SFX: ON' : 'SFX: OFF';
   }
 
   function initHud() {
@@ -47,30 +40,6 @@
 
     updateThemeButton();
     updateSfxButton();
-
-    // Live UTC clock
-    const clockEl = document.getElementById('hud-clock');
-    function tickClock() {
-      if (!clockEl) return;
-      const now = new Date();
-      const hh = String(now.getUTCHours()).padStart(2, '0');
-      const mm = String(now.getUTCMinutes()).padStart(2, '0');
-      const ss = String(now.getUTCSeconds()).padStart(2, '0');
-      clockEl.textContent = hh + ':' + mm + ':' + ss + ' UTC';
-    }
-    tickClock();
-    setInterval(tickClock, 1000);
-
-    // Deterministic-looking ephemeral session fingerprint
-    const hashEl = document.getElementById('hud-hash');
-    if (hashEl) {
-      const hex = '0123456789abcdef';
-      let fp = '';
-      for (let i = 0; i < 8; i++) {
-        fp += hex[(Math.random() * 16) | 0];
-      }
-      hashEl.textContent = '// SHA:' + fp;
-    }
   }
 
   function initHeroInteractions() {

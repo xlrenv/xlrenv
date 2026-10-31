@@ -51,67 +51,133 @@
   animation: shutterPulse 0.34s var(--ease-snap) forwards;
 }
 
-/* --- Corner Micro-HUD --- */
-.hud {
+/* --- Minimalist Top-Right Pill Controls (Theme & Sound) --- */
+.ambient-controls {
   position: fixed;
+  top: clamp(18px, 3vh, 28px);
+  right: clamp(18px, 3vw, 32px);
   z-index: 40;
-  font-family: var(--font-mono);
-  font-size: 10.5px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--fg-muted);
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 12px;
-  user-select: none;
-}
-
-.hud--tl {
-  top: clamp(16px, 2.8vh, 28px);
-  left: clamp(16px, 2.8vw, 32px);
-}
-
-.hud--tr {
-  top: clamp(16px, 2.8vh, 28px);
-  right: clamp(16px, 2.8vw, 32px);
-}
-
-.hud--bl {
-  bottom: clamp(16px, 2.8vh, 28px);
-  left: clamp(16px, 2.8vw, 32px);
-}
-
-.hud--br {
-  bottom: clamp(16px, 2.8vh, 28px);
-  right: clamp(16px, 2.8vw, 32px);
-}
-
-.status-beacon {
-  display: inline-block;
-  width: 6px;
-  height: 6px;
-  background: var(--fg);
-  animation: beaconBlink 2.6s steps(2) infinite;
-}
-
-.hud-toggle {
-  padding: 4px 8px;
+  gap: 4px;
+  padding: 4px;
+  border-radius: 999px;
   border: 1px solid var(--border);
-  color: var(--fg-muted);
-  font-size: 10px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  transition: color 0.18s ease, border-color 0.18s ease, background-color 0.18s ease;
+  background: color-mix(in srgb, var(--bg) 78%, transparent);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  user-select: none;
+  transition: border-color 0.25s ease, background-color 0.28s var(--ease-snap);
 }
 
-.hud-toggle:hover,
-.hud-toggle[aria-pressed="true"] {
-  color: var(--fg);
+.ambient-controls:hover {
   border-color: var(--border-strong);
 }
 
-.hud-toggle[aria-pressed="true"] {
+.ctrl-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--fg-muted);
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease,
+    transform 0.16s var(--ease-snap);
+}
+
+.ctrl-btn:hover,
+.ctrl-btn[aria-pressed="true"] {
+  color: var(--fg);
+}
+
+.ctrl-btn:hover {
   background: var(--border);
+}
+
+.ctrl-btn:active {
+  transform: scale(0.9);
+}
+
+.icon-eclipse {
+  display: block;
+  transition: transform 0.55s var(--ease-snap);
+}
+
+[data-theme="bone"] .icon-eclipse {
+  transform: rotate(180deg);
+}
+
+/* Sound Equalizer Bars */
+.eq-bars {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.2px;
+  width: 15px;
+  height: 15px;
+}
+
+.eq-bar {
+  width: 1.7px;
+  border-radius: 2px;
+  background: currentColor;
+  opacity: 0.5;
+  transition: height 0.25s var(--ease-snap), opacity 0.2s ease;
+}
+
+.eq-bar:nth-child(1) { height: 5px; }
+.eq-bar:nth-child(2) { height: 10px; }
+.eq-bar:nth-child(3) { height: 7px; }
+.eq-bar:nth-child(4) { height: 4px; }
+
+.eq-slash {
+  position: absolute;
+  width: 16px;
+  height: 1.4px;
+  background: currentColor;
+  border-radius: 2px;
+  transform: rotate(-38deg) scaleX(1);
+  transform-origin: center;
+  opacity: 0.75;
+  transition: transform 0.26s var(--ease-snap), opacity 0.2s ease;
+}
+
+.ctrl-btn:hover .eq-bar {
+  opacity: 0.85;
+}
+
+.ctrl-btn[aria-pressed="true"] .eq-slash {
+  transform: rotate(-38deg) scaleX(0);
+  opacity: 0;
+}
+
+.ctrl-btn[aria-pressed="true"] .eq-bar {
+  opacity: 1;
+  animation: eqPulse 0.9s ease-in-out infinite alternate;
+}
+
+.ctrl-btn[aria-pressed="true"] .eq-bar:nth-child(1) {
+  height: 7px;
+  animation-delay: 0s;
+}
+
+.ctrl-btn[aria-pressed="true"] .eq-bar:nth-child(2) {
+  height: 13px;
+  animation-delay: 0.18s;
+}
+
+.ctrl-btn[aria-pressed="true"] .eq-bar:nth-child(3) {
+  height: 9px;
+  animation-delay: 0.34s;
+}
+
+.ctrl-btn[aria-pressed="true"] .eq-bar:nth-child(4) {
+  height: 11px;
+  animation-delay: 0.12s;
 }
 
 /* --- Central Stage --- */
@@ -138,11 +204,6 @@
 }
 
 @media (max-width: 600px) {
-  .hud--bl .hud-hash,
-  .hud--br {
-    display: none;
-  }
-
   .stage {
     padding: 72px 16px 64px;
   }
