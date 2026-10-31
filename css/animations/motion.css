@@ -1,0 +1,87 @@
+/* ==========================================================================
+   KEYFRAMES & REDUCED MOTION
+   ========================================================================== */
+
+@keyframes grainShift {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(-2%, 2%); }
+  50% { transform: translate(2%, -1%); }
+  75% { transform: translate(-1%, -2%); }
+  100% { transform: translate(0, 0); }
+}
+
+@keyframes beaconBlink {
+  0%, 76% { opacity: 1; }
+  77%, 100% { opacity: 0.18; }
+}
+
+@keyframes shutterPulse {
+  0% { opacity: 0.22; }
+  100% { opacity: 0; }
+}
+
+@keyframes panelUnfold {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+    clip-path: inset(0 0 100% 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    clip-path: inset(0 0 0% 0);
+  }
+}
+
+@keyframes bootReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes glitchSlice {
+  0% { transform: translate3d(0, 0, 0) skewX(0deg); filter: none; }
+  20% { transform: translate3d(-4px, 1px, 0) skewX(-3deg); }
+  40% { transform: translate3d(5px, -1px, 0) skewX(2.5deg); }
+  60% { transform: translate3d(-2px, 0, 0) skewX(-1deg); }
+  80% { transform: translate3d(2px, 1px, 0) skewX(1deg); }
+  100% { transform: translate3d(0, 0, 0) skewX(0deg); filter: none; }
+}
+
+body.is-glitching .core-column {
+  animation: glitchSlice 0.24s steps(2, end);
+}
+
+.boot-item {
+  opacity: 0;
+  animation: bootReveal 0.65s var(--ease-snap) forwards;
+}
+
+.boot-item--1 { animation-delay: 0.05s; }
+.boot-item--2 { animation-delay: 0.14s; }
+.boot-item--3 { animation-delay: 0.23s; }
+.boot-item--4 { animation-delay: 0.32s; }
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .grain-layer {
+    animation: none !important;
+  }
+
+  .boot-item {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

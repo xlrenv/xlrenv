@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="void">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#060606" />
+  <title>xlrenv — devsecops инженер</title>
+  <meta name="description" content="xlrenv — DevSecOps инженер. Minimalist interactive portfolio card." />
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg" />
+
+  <!-- Fonts: Inter (Stark Grotesque), Oswald (Tour Condensed), JetBrains Mono (Cyrillic + Latin) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Modular CSS Tree -->
+  <link rel="stylesheet" href="css/base/tokens.css" />
+  <link rel="stylesheet" href="css/base/reset.css" />
+  <link rel="stylesheet" href="css/layout/stage.css" />
+  <link rel="stylesheet" href="css/components/sigil.css" />
+  <link rel="stylesheet" href="css/components/nav.css" />
+  <link rel="stylesheet" href="css/components/terminal.css" />
+  <link rel="stylesheet" href="css/components/cursor.css" />
+  <link rel="stylesheet" href="css/animations/motion.css" />
+</head>
+<body data-view="index">
+
+  <!-- Interactive Sparse Coordinate Canvas & Subtle Film Texture -->
+  <canvas id="bg-field" aria-hidden="true"></canvas>
+  <div class="scanline-layer" aria-hidden="true"></div>
+  <div class="grain-layer" aria-hidden="true"></div>
+  <div id="shutter-flash" class="shutter-flash" aria-hidden="true"></div>
+
+  <!-- Custom Magnetic Corner-Bracket Reticle Cursor -->
+  <div id="cursor-dot" class="cursor-dot" aria-hidden="true"></div>
+  <div id="cursor-reticle" class="cursor-reticle" aria-hidden="true">
+    <span class="reticle-corner reticle-corner--tl"></span>
+    <span class="reticle-corner reticle-corner--tr"></span>
+    <span class="reticle-corner reticle-corner--bl"></span>
+    <span class="reticle-corner reticle-corner--br"></span>
+  </div>
+
+  <!-- Minimalist Corner Micro-HUD -->
+  <header class="hud hud--tl" aria-label="System status">
+    <span class="status-beacon" aria-hidden="true"></span>
+    <span>XLRENV // NODE.01</span>
+  </header>
+
+  <div class="hud hud--tr" role="toolbar" aria-label="Display and audio controls">
+    <button id="theme-toggle" class="hud-toggle" type="button" aria-pressed="false" title="Toggle Void / Bone polarity [I]">
+      MODE: VOID
+    </button>
+    <button id="sfx-toggle" class="hud-toggle" type="button" aria-pressed="false" title="Toggle tactile micro-audio">
+      SFX: OFF
+    </button>
+  </div>
+
+  <footer class="hud hud--bl" aria-label="Telemetry">
+    <span id="hud-clock">00:00:00 UTC</span>
+    <span id="hud-hash" class="hud-hash">// SHA:00000000</span>
+  </footer>
+
+  <div class="hud hud--br" aria-hidden="true">
+    <span>[1–3] VIEW · [I] INVERT · [ESC] RESET</span>
+  </div>
+
+  <!-- Central Minimalist Stage (OsamaSon-inspired stark composition) -->
+  <main class="stage">
+    <div class="core-column">
+
+      <!-- 1. Interactive 1-Bit Bayer Dithered 3D SDF Sigil (Click to morph topology) -->
+      <div
+        id="sigil-wrap"
+        class="sigil-wrap boot-item boot-item--1"
+        role="button"
+        tabindex="0"
+        aria-label="Interactive 3D security sigil — click to morph topology"
+        title="Click to morph 3D topology"
+      >
+        <canvas id="sigil-canvas"></canvas>
+        <span id="sigil-caption" class="sigil-caption">01 // OCTA-SIGIL</span>
+      </div>
+
+      <!-- 2. Identity: xlrenv / devsecops инженер -->
+      <div class="identity boot-item boot-item--2">
+        <h1 id="hero-nick" class="identity-nick" title="xlrenv">
+          <span class="char">x</span><span class="char">l</span><span class="char">r</span><span class="char">e</span><span class="char">n</span><span class="char">v</span>
+        </h1>
+        <p class="identity-role" data-reticle>
+          <span class="role-slash">//</span>
+          <span id="hero-role-text">devsecops инженер</span>
+          <span class="role-slash">//</span>
+        </p>
+      </div>
+
+      <!-- 3. Stark Minimalist Action Row -->
+      <nav class="action-row boot-item boot-item--3" aria-label="Sections">
+        <button class="stark-btn" type="button" data-view-btn="stack" aria-expanded="false">
+          <span class="btn-label" data-text="STACK">STACK</span>
+        </button>
+        <button class="stark-btn" type="button" data-view-btn="shell" aria-expanded="false">
+          <span class="btn-label" data-text="SHELL">SHELL</span>
+        </button>
+        <button class="stark-btn" type="button" data-view-btn="contact" aria-expanded="false">
+          <span class="btn-label" data-text="CONTACT">CONTACT</span>
+        </button>
+      </nav>
+
+      <!-- 4. Expandable Minimalist View Stage -->
+      <div class="panel-stage boot-item boot-item--4">
+
+        <!-- VIEW 01: STACK (Tour-poster inspired condensed brutalist domains) -->
+        <section class="view-panel" data-view-panel="stack" aria-hidden="true">
+          <div class="panel-header">
+            <span data-panel-title data-text="01 // DEVSECOPS ARSENAL">01 // DEVSECOPS ARSENAL</span>
+            <button class="panel-close" type="button" data-close-panel>[ ESC / CLOSE ]</button>
+          </div>
+          <ul class="brutalist-list">
+            <li class="brutalist-item" data-reticle>
+              <div class="brutalist-row-top">
+                <span class="brutalist-title">INFRASTRUCTURE &amp; HARDENING</span>
+                <span class="brutalist-index">01</span>
+              </div>
+              <p class="brutalist-spec">LINUX KERNEL · KUBERNETES · TERRAFORM · DOCKER · NIX</p>
+            </li>
+            <li class="brutalist-item" data-reticle>
+              <div class="brutalist-row-top">
+                <span class="brutalist-title">PIPELINE &amp; SUPPLY CHAIN</span>
+                <span class="brutalist-index">02</span>
+              </div>
+              <p class="brutalist-spec">CI/CD SEC · SAST / DAST · VAULT · COSIGN · OPA POLICY</p>
+            </li>
+            <li class="brutalist-item" data-reticle>
+              <div class="brutalist-row-top">
+                <span class="brutalist-title">ZERO-TRUST &amp; NETWORK</span>
+                <span class="brutalist-index">03</span>
+              </div>
+              <p class="brutalist-spec">EBPF LSM · WIREGUARD · NFTABLES · MTLS MESH · BGP</p>
+            </li>
+            <li class="brutalist-item" data-reticle>
+              <div class="brutalist-row-top">
+                <span class="brutalist-title">AUDIT &amp; LOW-LEVEL</span>
+                <span class="brutalist-index">04</span>
+              </div>
+              <p class="brutalist-spec">THREAT MODELING · GOLANG · REVERSE · INCIDENT RESPONSE</p>
+            </li>
+          </ul>
+        </section>
+
+        <!-- VIEW 02: SHELL (Interactive minimalist CLI) -->
+        <section class="view-panel" data-view-panel="shell" aria-hidden="true">
+          <div class="panel-header">
+            <span data-panel-title data-text="02 // INTERACTIVE TERMINAL">02 // INTERACTIVE TERMINAL</span>
+            <button class="panel-close" type="button" data-close-panel>[ ESC / CLOSE ]</button>
+          </div>
+          <div class="shell-frame">
+            <div id="shell-output" class="shell-output" aria-live="polite"></div>
+            <form id="shell-form" class="shell-input-row" autocomplete="off">
+              <label for="shell-input" class="shell-prompt">xlrenv@node:~$</label>
+              <input
+                id="shell-input"
+                class="shell-input"
+                type="text"
+                spellcheck="false"
+                placeholder="type help, audit, whoami..."
+              />
+            </form>
+            <div class="shell-pills" aria-label="Quick terminal directives">
+              <button class="shell-pill" type="button" data-shell-cmd="whoami">whoami</button>
+              <button class="shell-pill" type="button" data-shell-cmd="audit">audit</button>
+              <button class="shell-pill" type="button" data-shell-cmd="stack">stack</button>
+              <button class="shell-pill" type="button" data-shell-cmd="morph">morph</button>
+              <button class="shell-pill" type="button" data-shell-cmd="invert">invert</button>
+              <button class="shell-pill" type="button" data-shell-cmd="glitch">glitch</button>
+              <button class="shell-pill" type="button" data-shell-cmd="clear">clear</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- VIEW 03: CONTACT (Stark brutalist channels + clipboard copy) -->
+        <section class="view-panel" data-view-panel="contact" aria-hidden="true">
+          <div class="panel-header">
+            <span data-panel-title data-text="03 // DIRECT CHANNELS">03 // DIRECT CHANNELS</span>
+            <button class="panel-close" type="button" data-close-panel>[ ESC / CLOSE ]</button>
+          </div>
+          <div class="contact-list">
+            <a class="contact-link" href="https://t.me/xlrenv" target="_blank" rel="noopener noreferrer">
+              <span class="contact-label">TELEGRAM</span>
+              <span class="contact-meta">@XLRENV ↗</span>
+            </a>
+            <a class="contact-link" href="https://github.com/xlrenv" target="_blank" rel="noopener noreferrer">
+              <span class="contact-label">GITHUB</span>
+              <span class="contact-meta">GITHUB.COM/XLRENV ↗</span>
+            </a>
+            <button class="contact-link" type="button" data-copy="@xlrenv">
+              <span class="contact-label">COPY HANDLE</span>
+              <span class="contact-meta">[ @XLRENV ]</span>
+            </button>
+          </div>
+          <div id="copy-toast" class="toast-status" aria-live="polite"></div>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Modular Vanilla JS (No ES-module CORS block when opened directly via file://) -->
+  <script defer src="js/core/state.js"></script>
+  <script defer src="js/fx/audio.js"></script>
+  <script defer src="js/fx/scramble.js"></script>
+  <script defer src="js/fx/cursor.js"></script>
+  <script defer src="js/fx/bg-field.js"></script>
+  <script defer src="js/fx/sigil-canvas.js"></script>
+  <script defer src="js/ui/views.js"></script>
+  <script defer src="js/ui/terminal.js"></script>
+  <script defer src="js/main.js"></script>
+</body>
+</html>

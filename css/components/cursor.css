@@ -1,0 +1,77 @@
+/* ==========================================================================
+   CORNER-BRACKET RETICLE CURSOR (MAGNETIC TARGETING)
+   ========================================================================== */
+
+.cursor-dot,
+.cursor-reticle {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  will-change: transform, width, height, opacity;
+}
+
+.cursor-dot {
+  width: 4px;
+  height: 4px;
+  background: var(--fg);
+  transform: translate3d(-100px, -100px, 0);
+  transition: opacity 0.15s ease;
+}
+
+.cursor-reticle {
+  width: 22px;
+  height: 22px;
+  transform: translate3d(-100px, -100px, 0);
+  transition: opacity 0.2s ease;
+}
+
+.reticle-corner {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-color: var(--fg);
+  border-style: solid;
+  transition: border-color 0.15s ease, width 0.18s ease, height 0.18s ease;
+}
+
+.cursor-reticle.is-locked .reticle-corner {
+  width: 7px;
+  height: 7px;
+}
+
+[data-theme="void"] .cursor-reticle.is-locked .reticle-corner {
+  border-color: var(--signal);
+}
+
+.reticle-corner--tl {
+  top: 0;
+  left: 0;
+  border-width: 1.5px 0 0 1.5px;
+}
+
+.reticle-corner--tr {
+  top: 0;
+  right: 0;
+  border-width: 1.5px 1.5px 0 0;
+}
+
+.reticle-corner--bl {
+  bottom: 0;
+  left: 0;
+  border-width: 0 0 1.5px 1.5px;
+}
+
+.reticle-corner--br {
+  bottom: 0;
+  right: 0;
+  border-width: 0 1.5px 1.5px 0;
+}
+
+@media (hover: none), (pointer: coarse) {
+  .cursor-dot,
+  .cursor-reticle {
+    display: none !important;
+  }
+}

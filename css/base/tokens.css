@@ -1,0 +1,54 @@
+/* ==========================================================================
+   TOKENS — VOID (#060606) & BONE (#F9F9ED — OSAMASON POLARITY)
+   ========================================================================== */
+
+:root,
+[data-theme="void"] {
+  --bg: #060606;
+  --bg-elevated: #0d0d0d;
+  --bg-panel: rgba(11, 11, 11, 0.92);
+  --fg: #f4f4ee;
+  --fg-muted: #767672;
+  --fg-dim: #363634;
+  --border: rgba(244, 244, 238, 0.12);
+  --border-strong: rgba(244, 244, 238, 0.45);
+  --btn-bg: #f4f4ee;
+  --btn-fg: #060606;
+  --btn-sec-bg: transparent;
+  --btn-sec-fg: #f4f4ee;
+  --signal: #e8ff3b; /* Tour-poster raw flash accent */
+  --ok: #d8d8d0;
+  --grain-opacity: 0.028;
+  --scanline-opacity: 0.014;
+  --dither-rgb: 244, 244, 238;
+  --grid-dot: rgba(244, 244, 238, 0.14);
+
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Oswald', 'Arial Narrow', Impact, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'Cascadia Code', 'Fira Code', monospace;
+
+  --ease-snap: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-sharp: cubic-bezier(0.7, 0, 0.2, 1);
+}
+
+/* OsamaSon main-site Bone Cream polarity (#f9f9ed + #111111) */
+[data-theme="bone"] {
+  --bg: #f9f9ed;
+  --bg-elevated: #efefdf;
+  --bg-panel: rgba(249, 249, 237, 0.94);
+  --fg: #111111;
+  --fg-muted: #66665e;
+  --fg-dim: #c5c5b8;
+  --border: rgba(17, 17, 17, 0.14);
+  --border-strong: rgba(17, 17, 17, 0.65);
+  --btn-bg: #111111;
+  --btn-fg: #f9f9ed;
+  --btn-sec-bg: transparent;
+  --btn-sec-fg: #111111;
+  --signal: #111111;
+  --ok: #111111;
+  --grain-opacity: 0.035;
+  --scanline-opacity: 0.02;
+  --dither-rgb: 17, 17, 17;
+  --grid-dot: rgba(17, 17, 17, 0.16);
+}

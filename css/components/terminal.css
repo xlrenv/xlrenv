@@ -1,0 +1,113 @@
+/* ==========================================================================
+   MINIMALIST DEVSECOPS SHELL
+   ========================================================================== */
+
+.shell-frame {
+  border: 1px solid var(--border-strong);
+  background: var(--bg-panel);
+  padding: 14px 16px;
+}
+
+.shell-output {
+  max-height: 185px;
+  overflow-y: auto;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  line-height: 1.55;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-right: 4px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-strong) transparent;
+}
+
+.shell-output::-webkit-scrollbar {
+  width: 3px;
+}
+
+.shell-output::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+}
+
+.shell-line {
+  word-break: break-word;
+  color: var(--fg);
+}
+
+.shell-line--muted {
+  color: var(--fg-muted);
+}
+
+.shell-line--cmd {
+  color: var(--fg-muted);
+}
+
+.shell-line--ok {
+  color: var(--fg);
+  font-weight: 600;
+}
+
+[data-theme="void"] .shell-tag-ok {
+  color: var(--signal);
+}
+
+[data-theme="bone"] .shell-tag-ok {
+  background: var(--fg);
+  color: var(--bg);
+  padding: 0 4px;
+}
+
+.shell-input-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+}
+
+.shell-prompt {
+  color: var(--fg-muted);
+  white-space: nowrap;
+  user-select: none;
+}
+
+.shell-input {
+  flex: 1;
+  min-width: 0;
+  color: var(--fg);
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  caret-color: var(--fg);
+}
+
+.shell-input::placeholder {
+  color: var(--fg-dim);
+}
+
+.shell-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.shell-pill {
+  padding: 3px 8px;
+  border: 1px solid var(--border);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  transition: color 0.15s ease, border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.shell-pill:hover {
+  color: var(--bg);
+  background: var(--fg);
+  border-color: var(--fg);
+}

@@ -1,0 +1,149 @@
+/* ==========================================================================
+   STAGE LAYOUT & CORNER HUD — VAST NEGATIVE SPACE
+   ========================================================================== */
+
+#bg-field {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.grain-layer {
+  position: fixed;
+  inset: -50%;
+  width: 200%;
+  height: 200%;
+  pointer-events: none;
+  z-index: 90;
+  opacity: var(--grain-opacity);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation: grainShift 0.55s steps(2) infinite;
+}
+
+.scanline-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 89;
+  opacity: var(--scanline-opacity);
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 2px,
+    var(--fg) 2px,
+    var(--fg) 3px
+  );
+}
+
+.shutter-flash {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 95;
+  background: var(--fg);
+  opacity: 0;
+}
+
+.shutter-flash.is-active {
+  animation: shutterPulse 0.34s var(--ease-snap) forwards;
+}
+
+/* --- Corner Micro-HUD --- */
+.hud {
+  position: fixed;
+  z-index: 40;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  user-select: none;
+}
+
+.hud--tl {
+  top: clamp(16px, 2.8vh, 28px);
+  left: clamp(16px, 2.8vw, 32px);
+}
+
+.hud--tr {
+  top: clamp(16px, 2.8vh, 28px);
+  right: clamp(16px, 2.8vw, 32px);
+}
+
+.hud--bl {
+  bottom: clamp(16px, 2.8vh, 28px);
+  left: clamp(16px, 2.8vw, 32px);
+}
+
+.hud--br {
+  bottom: clamp(16px, 2.8vh, 28px);
+  right: clamp(16px, 2.8vw, 32px);
+}
+
+.status-beacon {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: var(--fg);
+  animation: beaconBlink 2.6s steps(2) infinite;
+}
+
+.hud-toggle {
+  padding: 4px 8px;
+  border: 1px solid var(--border);
+  color: var(--fg-muted);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: color 0.18s ease, border-color 0.18s ease, background-color 0.18s ease;
+}
+
+.hud-toggle:hover,
+.hud-toggle[aria-pressed="true"] {
+  color: var(--fg);
+  border-color: var(--border-strong);
+}
+
+.hud-toggle[aria-pressed="true"] {
+  background: var(--border);
+}
+
+/* --- Central Stage --- */
+.stage {
+  position: relative;
+  z-index: 10;
+  min-height: 100vh;
+  min-height: 100svh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 84px 20px;
+}
+
+.core-column {
+  width: 100%;
+  max-width: 540px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .hud--bl .hud-hash,
+  .hud--br {
+    display: none;
+  }
+
+  .stage {
+    padding: 72px 16px 64px;
+  }
+}
