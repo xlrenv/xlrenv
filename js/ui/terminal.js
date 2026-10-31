@@ -71,7 +71,7 @@
         runAudit();
       } else if (cmd === 'links' || cmd === 'contact') {
         printLine('tg      -> https://t.me/xlrenv');
-        printLine('discord -> xlrenv');
+        printLine('discord -> https://discord.gg/VN5H48YkRr');
         printLine('github  -> https://github.com/xlrenv');
         printLine('channel -> https://t.me/bt0hub');
       } else if (cmd === 'invert' || cmd === 'theme' || cmd === 'bone' || cmd === 'void') {
